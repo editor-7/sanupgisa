@@ -5,6 +5,8 @@ let currentIndex = 0;
 let selected = null;
 let solved = 0;
 let correctCount = 0;
+let autoReadMode = false;
+let autoReadTimer = null;
 
 const el = {
   meta: document.getElementById("meta"),
@@ -20,8 +22,104 @@ const el = {
   checkBtn: document.getElementById("check-btn"),
   nextBtn: document.getElementById("next-btn"),
   jumpInput: document.getElementById("jump-input"),
-  jumpBtn: document.getElementById("jump-btn")
+  jumpBtn: document.getElementById("jump-btn"),
+  readBtn: document.getElementById("read-btn"),
+  autoReadBtn: document.getElementById("auto-read-btn"),
+  speakAnswer: document.getElementById("speak-answer"),
+  readGap: document.getElementById("read-gap")
 };
+
+function clearAutoReadTimer() {
+  if (!autoReadTimer) return;
+  clearTimeout(autoReadTimer);
+  autoReadTimer = null;
+}
+
+function setAutoReadButtonText() {
+  el.autoReadBtn.textContent = autoReadMode ? "자동 듣기 중지" : "자동 듣기 시작";
+}
+
+function speakIndexLabel(index) {
+  const labels = {
+    1: "일번",
+    2: "이번",
+    3: "삼번",
+    4: "사번"
+  };
+  return labels[index] || `${index}번`;
+}
+
+function toKoreanNumber(n) {
+  const num = Number(n);
+  if (!Number.isInteger(num) || num <= 0) return String(n);
+  const digits = ["", "일", "이", "삼", "사", "오", "육", "칠", "팔", "구"];
+  if (num < 10) return digits[num];
+  if (num < 100) {
+    const t = Math.floor(num / 10);
+    const o = num % 10;
+    const tens = t === 1 ? "십" : `${digits[t]}십`;
+    return `${tens}${digits[o]}`;
+  }
+  return String(num);
+}
+
+function getQuestionSpeakText(q, includeAnswer) {
+  const optionsText = [...(q.options || [])]
+    .sort((a, b) => a.index - b.index)
+    .map((opt) => `${speakIndexLabel(opt.index)}. ${opt.text}`)
+    .join(". ");
+  const answerOpt = (q.options || []).find((opt) => opt.index === q.answer);
+  const answerText = includeAnswer
+    ? ` 정답은 ${speakIndexLabel(q.answer)}. 정답 내용은 ${answerOpt ? answerOpt.text : "없음"}.`
+    : "";
+  return `${toKoreanNumber(q.number)}번 문제. ${q.question}. ${optionsText}.${answerText}`;
+}
+
+function speakText(text) {
+  return new Promise((resolve) => {
+    if (!("speechSynthesis" in window)) {
+      el.feedback.textContent = "이 브라우저는 음성 읽기를 지원하지 않아.";
+      resolve(false);
+      return;
+    }
+    window.speechSynthesis.cancel();
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.lang = "ko-KR";
+    utter.rate = 1;
+    utter.onend = () => resolve(true);
+    utter.onerror = () => resolve(false);
+    window.speechSynthesis.speak(utter);
+  });
+}
+
+async function readCurrentQuestion() {
+  if (!quiz) return false;
+  const q = quiz.questions[currentIndex];
+  const includeAnswer = el.speakAnswer.checked;
+  const text = getQuestionSpeakText(q, includeAnswer);
+  return speakText(text);
+}
+
+async function runAutoReadStep() {
+  if (!autoReadMode || !quiz) return;
+  const ok = await readCurrentQuestion();
+  if (!autoReadMode || !ok) return;
+  const gapSec = Number(el.readGap.value);
+  const waitMs = Math.max(1, Number.isNaN(gapSec) ? 2 : gapSec) * 1000;
+  clearAutoReadTimer();
+  autoReadTimer = setTimeout(() => {
+    currentIndex = (currentIndex + 1) % quiz.questions.length;
+    renderQuestion();
+    runAutoReadStep();
+  }, waitMs);
+}
+
+async function syncSpeechToCurrentQuestion() {
+  if (!autoReadMode) return;
+  clearAutoReadTimer();
+  if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+  await runAutoReadStep();
+}
 
 function resetProgress() {
   currentIndex = 0;
@@ -119,12 +217,14 @@ el.nextBtn.addEventListener("click", () => {
   if (!quiz) return;
   currentIndex = (currentIndex + 1) % quiz.questions.length;
   renderQuestion();
+  syncSpeechToCurrentQuestion();
 });
 
 el.prevBtn.addEventListener("click", () => {
   if (!quiz) return;
   currentIndex = (currentIndex - 1 + quiz.questions.length) % quiz.questions.length;
   renderQuestion();
+  syncSpeechToCurrentQuestion();
 });
 
 el.jumpBtn.addEventListener("click", () => {
@@ -141,6 +241,31 @@ el.jumpBtn.addEventListener("click", () => {
   }
   currentIndex = idx;
   renderQuestion();
+  syncSpeechToCurrentQuestion();
+});
+
+el.readBtn.addEventListener("click", async () => {
+  if (autoReadMode) {
+    // 이미 연속 재생 중이면 현재 문제부터 다시 시작
+    clearAutoReadTimer();
+    if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+    await runAutoReadStep();
+    return;
+  }
+  autoReadMode = true;
+  setAutoReadButtonText();
+  await runAutoReadStep();
+});
+
+el.autoReadBtn.addEventListener("click", async () => {
+  autoReadMode = !autoReadMode;
+  setAutoReadButtonText();
+  if (!autoReadMode) {
+    clearAutoReadTimer();
+    if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+    return;
+  }
+  await runAutoReadStep();
 });
 
 async function loadQuiz(examId = "") {
@@ -193,3 +318,5 @@ init().catch((err) => {
   el.meta.textContent = "데이터를 불러오지 못함";
   el.qText.textContent = String(err.message || err);
 });
+
+setAutoReadButtonText();

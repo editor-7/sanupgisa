@@ -12,6 +12,12 @@
       <div class="card">
         <label for="exam-select">회차 선택</label>
         <select id="exam-select"></select>
+        <div class="audio-controls">
+          <button id="read-btn" type="button">문제 읽기</button>
+          <button id="auto-read-btn" type="button">자동 듣기 시작</button>
+          <label class="inline"><input id="speak-answer" type="checkbox" checked /> 정답 같이 읽기</label>
+          <label class="inline">간격(초) <input id="read-gap" type="number" min="1" value="2" /></label>
+        </div>
       </div>
       <p id="meta" class="meta"></p>
       <section id="question-card" class="card">

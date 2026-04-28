@@ -39,6 +39,29 @@ select {
   background: #fff;
 }
 
+.audio-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+  align-items: center;
+}
+
+.inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 0;
+  font-weight: 400;
+}
+
+.inline input[type="number"] {
+  width: 64px;
+  padding: 6px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+}
+
 .card {
   background: #fff;
   border-radius: 12px;
