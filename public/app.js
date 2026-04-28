@@ -7,6 +7,8 @@ let solved = 0;
 let correctCount = 0;
 let autoReadMode = false;
 let autoReadTimer = null;
+let selectedVoice = null;
+let ttsUnlocked = false;
 
 const el = {
   meta: document.getElementById("meta"),
@@ -37,6 +39,31 @@ function clearAutoReadTimer() {
 
 function setAutoReadButtonText() {
   el.autoReadBtn.textContent = autoReadMode ? "자동 듣기 중지" : "자동 듣기 시작";
+}
+
+function pickKoreanVoice() {
+  if (!("speechSynthesis" in window)) return null;
+  const voices = window.speechSynthesis.getVoices() || [];
+  if (!voices.length) return null;
+  return (
+    voices.find((v) => v.lang && v.lang.toLowerCase().startsWith("ko-")) ||
+    voices.find((v) => v.lang && v.lang.toLowerCase().includes("ko")) ||
+    voices[0]
+  );
+}
+
+function primeTtsEngine() {
+  if (!("speechSynthesis" in window)) return;
+  selectedVoice = pickKoreanVoice();
+  // 모바일 브라우저에서 첫 음성 호출을 활성화하기 위한 무음 발화
+  if (ttsUnlocked) return;
+  const unlock = new SpeechSynthesisUtterance(" ");
+  unlock.volume = 0;
+  unlock.rate = 1;
+  if (selectedVoice) unlock.voice = selectedVoice;
+  unlock.lang = selectedVoice?.lang || "ko-KR";
+  window.speechSynthesis.speak(unlock);
+  ttsUnlocked = true;
 }
 
 function speakIndexLabel(index) {
@@ -84,10 +111,15 @@ function speakText(text) {
     }
     window.speechSynthesis.cancel();
     const utter = new SpeechSynthesisUtterance(text);
-    utter.lang = "ko-KR";
+    selectedVoice = selectedVoice || pickKoreanVoice();
+    if (selectedVoice) utter.voice = selectedVoice;
+    utter.lang = selectedVoice?.lang || "ko-KR";
     utter.rate = 1;
     utter.onend = () => resolve(true);
-    utter.onerror = () => resolve(false);
+    utter.onerror = () => {
+      el.feedback.textContent = "모바일 음성 읽기 시작에 실패했어. 듣기 버튼을 한 번 더 눌러줘.";
+      resolve(false);
+    };
     window.speechSynthesis.speak(utter);
   });
 }
@@ -245,6 +277,7 @@ el.jumpBtn.addEventListener("click", () => {
 });
 
 el.readBtn.addEventListener("click", async () => {
+  primeTtsEngine();
   if (autoReadMode) {
     // 이미 연속 재생 중이면 현재 문제부터 다시 시작
     clearAutoReadTimer();
@@ -258,6 +291,7 @@ el.readBtn.addEventListener("click", async () => {
 });
 
 el.autoReadBtn.addEventListener("click", async () => {
+  primeTtsEngine();
   autoReadMode = !autoReadMode;
   setAutoReadButtonText();
   if (!autoReadMode) {
@@ -320,3 +354,9 @@ init().catch((err) => {
 });
 
 setAutoReadButtonText();
+
+if ("speechSynthesis" in window) {
+  window.speechSynthesis.onvoiceschanged = () => {
+    selectedVoice = pickKoreanVoice();
+  };
+}
