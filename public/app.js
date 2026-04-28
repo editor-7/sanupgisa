@@ -55,14 +55,10 @@ function pickKoreanVoice() {
 function primeTtsEngine() {
   if (!("speechSynthesis" in window)) return;
   selectedVoice = pickKoreanVoice();
-  // 모바일 브라우저에서 첫 음성 호출을 활성화하기 위한 무음 발화
+  // 모바일 브라우저에서 첫 사용자 터치 시 음성 엔진을 깨운다.
   if (ttsUnlocked) return;
-  const unlock = new SpeechSynthesisUtterance(" ");
-  unlock.volume = 0;
-  unlock.rate = 1;
-  if (selectedVoice) unlock.voice = selectedVoice;
-  unlock.lang = selectedVoice?.lang || "ko-KR";
-  window.speechSynthesis.speak(unlock);
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.resume();
   ttsUnlocked = true;
 }
 
@@ -102,55 +98,116 @@ function getQuestionSpeakText(q, includeAnswer) {
   return `${toKoreanNumber(q.number)}번 문제. ${q.question}. ${optionsText}.${answerText}`;
 }
 
-function speakText(text) {
-  return new Promise((resolve) => {
-    if (!("speechSynthesis" in window)) {
-      el.feedback.textContent = "이 브라우저는 음성 읽기를 지원하지 않아.";
-      resolve(false);
-      return;
+function splitSpeakText(text, maxLen = 90) {
+  const source = String(text || "").replace(/\s+/g, " ").trim();
+  if (!source) return [];
+  const parts = source.split(/([.,!?]|다\.)/).reduce((acc, token) => {
+    if (!token) return acc;
+    if (!acc.length) {
+      acc.push(token);
+      return acc;
     }
-    window.speechSynthesis.cancel();
-    const utter = new SpeechSynthesisUtterance(text);
-    selectedVoice = selectedVoice || pickKoreanVoice();
-    if (selectedVoice) utter.voice = selectedVoice;
-    utter.lang = selectedVoice?.lang || "ko-KR";
-    utter.rate = 1;
-    utter.onend = () => resolve(true);
-    utter.onerror = () => {
-      el.feedback.textContent = "모바일 음성 읽기 시작에 실패했어. 듣기 버튼을 한 번 더 눌러줘.";
-      resolve(false);
-    };
-    window.speechSynthesis.speak(utter);
-  });
+    const prev = acc[acc.length - 1];
+    // 구두점은 이전 문장에 붙인다.
+    if (token.match(/^[.,!?]$/) || token === "다.") {
+      acc[acc.length - 1] = `${prev}${token}`;
+    } else {
+      acc.push(token);
+    }
+    return acc;
+  }, []);
+
+  const out = [];
+  for (const part of parts) {
+    const sentence = part.trim();
+    if (!sentence) continue;
+    if (sentence.length <= maxLen) {
+      out.push(sentence);
+      continue;
+    }
+    // 너무 긴 문장은 길이 기준으로 다시 분할
+    for (let i = 0; i < sentence.length; i += maxLen) {
+      out.push(sentence.slice(i, i + maxLen));
+    }
+  }
+  return out;
 }
 
-async function readCurrentQuestion() {
-  if (!quiz) return false;
+function speakText(text, onDone) {
+  if (!("speechSynthesis" in window)) {
+    el.feedback.textContent = "이 브라우저는 음성 읽기를 지원하지 않아.";
+    if (onDone) onDone(false);
+    return false;
+  }
+  try {
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.resume();
+    selectedVoice = selectedVoice || pickKoreanVoice();
+    const chunks = splitSpeakText(text);
+    if (!chunks.length) {
+      if (onDone) onDone(false);
+      return false;
+    }
+    let i = 0;
+    const speakNext = () => {
+      const utter = new SpeechSynthesisUtterance(chunks[i]);
+      if (selectedVoice) utter.voice = selectedVoice;
+      utter.lang = selectedVoice?.lang || "ko-KR";
+      utter.rate = 1;
+      utter.onend = () => {
+        i += 1;
+        if (i >= chunks.length) {
+          if (onDone) onDone(true);
+          return;
+        }
+        speakNext();
+      };
+      utter.onerror = () => {
+        el.feedback.textContent = "모바일 음성 시작 실패. 문제 읽기를 한 번 더 눌러줘.";
+        if (onDone) onDone(false);
+      };
+      window.speechSynthesis.speak(utter);
+    };
+    speakNext();
+    return true;
+  } catch (err) {
+    el.feedback.textContent = `음성 오류: ${String(err?.message || err)}`;
+    if (onDone) onDone(false);
+    return false;
+  }
+}
+
+function readCurrentQuestion(onDone) {
+  if (!quiz) {
+    if (onDone) onDone(false);
+    return;
+  }
   const q = quiz.questions[currentIndex];
   const includeAnswer = el.speakAnswer.checked;
   const text = getQuestionSpeakText(q, includeAnswer);
-  return speakText(text);
+  speakText(text, onDone);
 }
 
-async function runAutoReadStep() {
+function runAutoReadStep() {
   if (!autoReadMode || !quiz) return;
-  const ok = await readCurrentQuestion();
-  if (!autoReadMode || !ok) return;
-  const gapSec = Number(el.readGap.value);
-  const waitMs = Math.max(1, Number.isNaN(gapSec) ? 2 : gapSec) * 1000;
-  clearAutoReadTimer();
-  autoReadTimer = setTimeout(() => {
-    currentIndex = (currentIndex + 1) % quiz.questions.length;
-    renderQuestion();
-    runAutoReadStep();
-  }, waitMs);
+  readCurrentQuestion((ok) => {
+    if (!autoReadMode || !ok) return;
+    const gapSec = Number(el.readGap.value);
+    const waitMs = Math.max(1, Number.isNaN(gapSec) ? 2 : gapSec) * 1000;
+    clearAutoReadTimer();
+    autoReadTimer = setTimeout(() => {
+      currentIndex = (currentIndex + 1) % quiz.questions.length;
+      renderQuestion();
+      runAutoReadStep();
+    }, waitMs);
+  });
 }
 
-async function syncSpeechToCurrentQuestion() {
+function syncSpeechToCurrentQuestion() {
   if (!autoReadMode) return;
   clearAutoReadTimer();
   if ("speechSynthesis" in window) window.speechSynthesis.cancel();
-  await runAutoReadStep();
+  runAutoReadStep();
 }
 
 function resetProgress() {
@@ -276,21 +333,21 @@ el.jumpBtn.addEventListener("click", () => {
   syncSpeechToCurrentQuestion();
 });
 
-el.readBtn.addEventListener("click", async () => {
+el.readBtn.addEventListener("click", () => {
   primeTtsEngine();
   if (autoReadMode) {
     // 이미 연속 재생 중이면 현재 문제부터 다시 시작
     clearAutoReadTimer();
     if ("speechSynthesis" in window) window.speechSynthesis.cancel();
-    await runAutoReadStep();
+    runAutoReadStep();
     return;
   }
   autoReadMode = true;
   setAutoReadButtonText();
-  await runAutoReadStep();
+  runAutoReadStep();
 });
 
-el.autoReadBtn.addEventListener("click", async () => {
+el.autoReadBtn.addEventListener("click", () => {
   primeTtsEngine();
   autoReadMode = !autoReadMode;
   setAutoReadButtonText();
@@ -299,7 +356,7 @@ el.autoReadBtn.addEventListener("click", async () => {
     if ("speechSynthesis" in window) window.speechSynthesis.cancel();
     return;
   }
-  await runAutoReadStep();
+  runAutoReadStep();
 });
 
 async function loadQuiz(examId = "") {
