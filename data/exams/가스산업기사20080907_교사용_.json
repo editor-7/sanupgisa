@@ -1,0 +1,2222 @@
+{
+  "title": "가스산업기사20080907(교사용).pdf",
+  "total": 79,
+  "questions": [
+    {
+      "number": 1,
+      "question": "프로판가스 1kg을 완전연소시킬 때 필요한 이론공기량은 약 몇 Nm 3 /kg인가? (단, 공기 중 산소는 21vol%이다.)",
+      "options": [
+        {
+          "index": 1,
+          "text": "10.23"
+        },
+        {
+          "index": 2,
+          "text": "11.31"
+        },
+        {
+          "index": 3,
+          "text": "12.12"
+        },
+        {
+          "index": 4,
+          "text": "13.24"
+        }
+      ],
+      "answer": 3,
+      "explanation": ""
+    },
+    {
+      "number": 2,
+      "question": "다음 중 연소의 3요소를 옳게 나열한 것은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "가연물, 산소, 탄산가스"
+        },
+        {
+          "index": 2,
+          "text": "가연물, 빛, 탄산가스"
+        },
+        {
+          "index": 3,
+          "text": "가연물, 공기, 산소"
+        },
+        {
+          "index": 4,
+          "text": "가연물, 산소, 점화원"
+        }
+      ],
+      "answer": 4,
+      "explanation": ""
+    },
+    {
+      "number": 3,
+      "question": "다음 중 착화온도가 가장 높은 것은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "메탄"
+        },
+        {
+          "index": 2,
+          "text": "가솔린"
+        },
+        {
+          "index": 3,
+          "text": "프로판"
+        },
+        {
+          "index": 4,
+          "text": "아세틸렌"
+        }
+      ],
+      "answer": 1,
+      "explanation": ""
+    },
+    {
+      "number": 4,
+      "question": "산소 64kg과 질소 14kg의 혼합가스가 나타내는 전압이 20기 압이다. 이 때 산소의 분압은 몇 atm인가? (단, O 2 의 분자량 은 32, N 2 의 분자량은 28이다.)",
+      "options": [
+        {
+          "index": 1,
+          "text": "10"
+        },
+        {
+          "index": 2,
+          "text": "13"
+        },
+        {
+          "index": 3,
+          "text": "16"
+        },
+        {
+          "index": 4,
+          "text": "19"
+        }
+      ],
+      "answer": 3,
+      "explanation": ""
+    },
+    {
+      "number": 5,
+      "question": "다음 중 연료의 총 발열량(고발열량) Hh를 구하는 식은? (단, HL는 저위발열량, W는 수분(%), H는 수소원소(%)이다.)",
+      "options": [
+        {
+          "index": 1,
+          "text": "Hh＝HL＋600(9H＋W)"
+        },
+        {
+          "index": 2,
+          "text": "Hh＝HL－600(9H＋W)"
+        },
+        {
+          "index": 3,
+          "text": "Hh＝HL＋600(9H－W)"
+        },
+        {
+          "index": 4,
+          "text": "Hh＝HL－600(9H＋W)"
+        }
+      ],
+      "answer": 1,
+      "explanation": ""
+    },
+    {
+      "number": 6,
+      "question": "폭굉유도거리(DID)에 대한 설명으로 옳은 것은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "관경이 굵을수록 짧다."
+        },
+        {
+          "index": 2,
+          "text": "압력이 낮을수록 짧다."
+        },
+        {
+          "index": 3,
+          "text": "점화원의 에너지가 약할수록 짧다."
+        },
+        {
+          "index": 4,
+          "text": "정상연소속도가 큰 혼합가스일수록 짧다."
+        }
+      ],
+      "answer": 4,
+      "explanation": ""
+    },
+    {
+      "number": 7,
+      "question": "고열원 T 1 , 저열원 T 2 인 카르노사이클의 열효율을 옳게 나타 낸 것은?",
+      "options": [
+        {
+          "index": 1,
+          "text": ""
+        },
+        {
+          "index": 2,
+          "text": ""
+        },
+        {
+          "index": 3,
+          "text": ""
+        },
+        {
+          "index": 4,
+          "text": ""
+        }
+      ],
+      "answer": 1,
+      "explanation": ""
+    },
+    {
+      "number": 8,
+      "question": "다음 중 연소와 관련한 성질이 다른 가스는?",
+      "options": [
+        {
+          "index": 1,
+          "text": "산소"
+        },
+        {
+          "index": 2,
+          "text": "부탄"
+        },
+        {
+          "index": 3,
+          "text": "수소"
+        },
+        {
+          "index": 4,
+          "text": "일산화탄소"
+        }
+      ],
+      "answer": 1,
+      "explanation": ""
+    },
+    {
+      "number": 9,
+      "question": "“착화온도가 80°C이다.”를 가장 잘 설명한 것은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "80°C 이하로 가열하면 인화된다."
+        },
+        {
+          "index": 2,
+          "text": "80°C로 가열해서 점화원이 있으면 연소한다."
+        },
+        {
+          "index": 3,
+          "text": "80°C 이상 가열하고, 점화원이 있으면 연소한다."
+        },
+        {
+          "index": 4,
+          "text": "80°C로 가열하면 공기 중에서 스스로 연소한다."
+        }
+      ],
+      "answer": 4,
+      "explanation": ""
+    },
+    {
+      "number": 10,
+      "question": "프로판 1몰을 완전연소시키기 위하여 공기 870g을 불어넣 어 주었을 때 과잉공기는 약 몇 %인가? (단, 공기의 평균분 자량은 29이며, 공기 중 산소는 21vol%이다.)",
+      "options": [
+        {
+          "index": 1,
+          "text": "9.8"
+        },
+        {
+          "index": 2,
+          "text": "17.6"
+        },
+        {
+          "index": 3,
+          "text": "26.0"
+        },
+        {
+          "index": 4,
+          "text": "58.6"
+        }
+      ],
+      "answer": 3,
+      "explanation": ""
+    },
+    {
+      "number": 11,
+      "question": "다음 중 소화의 원리에 대한 설명으로 틀린 것은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "가연성 가스나 가연성 증기의 공급을 차단시킨다."
+        },
+        {
+          "index": 2,
+          "text": "연소 중에 있는 물질에 물이나 특수 냉각제를 뿌려 온도 를 낮춘다."
+        },
+        {
+          "index": 3,
+          "text": "연소 중에 있는 물질에 공기를 많이 공급하여 혼합기체 의 농도를 높게 한다."
+        },
+        {
+          "index": 4,
+          "text": "연소 중에 있는 물질의 표면에 불활성 가스를 덮어 씌워 가연성 물질과 공기의 접촉을 차단시킨다."
+        }
+      ],
+      "answer": 3,
+      "explanation": ""
+    },
+    {
+      "number": 12,
+      "question": "연소범위(폭발범위)에 대한 설명으로 틀린 것은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "상한치와 하한치의 값을 가지고 있다."
+        },
+        {
+          "index": 2,
+          "text": "연소범위가 좁으면 좁을수록 위험하다."
+        },
+        {
+          "index": 3,
+          "text": "연소에 필요한 혼합가스의 농도를 말한다."
+        },
+        {
+          "index": 4,
+          "text": "연소범위의 하한치는 활성화에너지의 영향을 받는다."
+        }
+      ],
+      "answer": 2,
+      "explanation": ""
+    },
+    {
+      "number": 13,
+      "question": "최소점화에너지(MIE)에 대한 설명으로 틀린 것은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "MIE는 압력의 증가에 따라 감소한다."
+        },
+        {
+          "index": 2,
+          "text": "MIE는 온도의 증가에 따라 증가한다."
+        },
+        {
+          "index": 3,
+          "text": "질소농도의 증가는 MIE를 증가시킨다."
+        },
+        {
+          "index": 4,
+          "text": "일반적으로 분진의 MIE는 가연성 가스 보다 큰 에너지준 위를 가진다."
+        }
+      ],
+      "answer": 2,
+      "explanation": ""
+    },
+    {
+      "number": 14,
+      "question": "고체연료의 연료비(fuel-ratio)를 옳게 나타낸 것은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "고정탄소(%) / 연료(%)"
+        },
+        {
+          "index": 2,
+          "text": "고정탄소(%) / 휘발분(%)"
+        },
+        {
+          "index": 3,
+          "text": "휘발분(%) / 고정탄소(%)"
+        },
+        {
+          "index": 4,
+          "text": "연료(%) / 고정탄소(%)"
+        }
+      ],
+      "answer": 2,
+      "explanation": ""
+    },
+    {
+      "number": 15,
+      "question": "어떤 혼합가스가 산소 10mol, 질소 10mol, 메탄 5mol을 포 함하고 있다. 이 혼합가스의 비중은 약 얼마인가? (단, 공기 의 평균 분자량은 29이다.)",
+      "options": [
+        {
+          "index": 1,
+          "text": "0.88"
+        },
+        {
+          "index": 2,
+          "text": "0.94"
+        },
+        {
+          "index": 3,
+          "text": "1.00"
+        },
+        {
+          "index": 4,
+          "text": "1.07"
+        }
+      ],
+      "answer": 2,
+      "explanation": ""
+    },
+    {
+      "number": 16,
+      "question": "내압(耐壓)방폭구조로 방폭전기기기를 설계할 때 가장 중요 하게 고려해야 할 사항은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "가연성 가스의 발화점"
+        },
+        {
+          "index": 2,
+          "text": "가연성 가스의 연소열"
+        },
+        {
+          "index": 3,
+          "text": "가연성 가스의 안전간극"
+        },
+        {
+          "index": 4,
+          "text": "가연성 가스의 최소점화에너지"
+        }
+      ],
+      "answer": 3,
+      "explanation": ""
+    },
+    {
+      "number": 17,
+      "question": "다음 중 이상기체에 대한 설명으로 틀린 것은 어느 것인가?",
+      "options": [
+        {
+          "index": 1,
+          "text": "보일-샤를의 법칙을 만족하는 기체이다."
+        },
+        {
+          "index": 2,
+          "text": "아보가드로의 법칙을 따르는 기체이다."
+        },
+        {
+          "index": 3,
+          "text": "반데르발스의 법칙을 따르는 기체이다."
+        },
+        {
+          "index": 4,
+          "text": "기체의 분자 간 인력과 부피가 무시된다."
+        }
+      ],
+      "answer": 3,
+      "explanation": ""
+    },
+    {
+      "number": 18,
+      "question": "폭발성 가스가 존재하는 전기기기에 사용 하는 방폭구조로 용기 내부에 보호가스(불활성 가스)를 압입하여 내부 압력을 유지함으로써 폭발성 가스의 침입을 방지하는 구조를 무엇 이라 하는가?",
+      "options": [
+        {
+          "index": 1,
+          "text": "내압방폭구조"
+        },
+        {
+          "index": 2,
+          "text": "압력방폭구조"
+        },
+        {
+          "index": 3,
+          "text": "유입방폭구조"
+        },
+        {
+          "index": 4,
+          "text": "안전증방폭구조"
+        }
+      ],
+      "answer": 2,
+      "explanation": ""
+    },
+    {
+      "number": 19,
+      "question": "퍼지(Purging)방법 중 용기의 한 개구부로 부터 퍼지가스를 가하고 다른 개구부로부터 대기(또는 스크러버)로 혼합가스 를 용기 에서 축출시키는 공정은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "진공퍼지(Vacuum Purging)"
+        },
+        {
+          "index": 2,
+          "text": "압력퍼지(Pressure Purging)"
+        },
+        {
+          "index": 3,
+          "text": "스위프퍼지(Sweep-Through Purging)"
+        },
+        {
+          "index": 4,
+          "text": "사이폰퍼지(Siphon Purging)"
+        }
+      ],
+      "answer": 3,
+      "explanation": ""
+    },
+    {
+      "number": 20,
+      "question": "분해폭발을 일으키는 물질은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "아세틸렌"
+        },
+        {
+          "index": 2,
+          "text": "액체산소"
+        },
+        {
+          "index": 3,
+          "text": "압축산소"
+        },
+        {
+          "index": 4,
+          "text": "시안화수소"
+        }
+      ],
+      "answer": 1,
+      "explanation": ""
+    },
+    {
+      "number": 21,
+      "question": "펄스 반사법과 공진법 등으로 재료 내부의 결함을 비파괴검 사하는 방법은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "방사선투과검사"
+        },
+        {
+          "index": 2,
+          "text": "침투탐상검사"
+        },
+        {
+          "index": 3,
+          "text": "자기탐상검사"
+        },
+        {
+          "index": 4,
+          "text": "초음파탐상검사"
+        }
+      ],
+      "answer": 4,
+      "explanation": ""
+    },
+    {
+      "number": 22,
+      "question": "다음은 용접용기의 동판두께를 계산하는 식이다. 이 식에서 S는 무엇을 나타내는가?",
+      "options": [
+        {
+          "index": 1,
+          "text": "최고충전압력"
+        },
+        {
+          "index": 2,
+          "text": "동판의 내경"
+        },
+        {
+          "index": 3,
+          "text": "재료의 허용응력"
+        },
+        {
+          "index": 4,
+          "text": "여유두께"
+        }
+      ],
+      "answer": 3,
+      "explanation": ""
+    },
+    {
+      "number": 23,
+      "question": "피셔(fisher)식 정압기에 대한 설명으로 틀린 것은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "로딩형 정압기이다."
+        },
+        {
+          "index": 2,
+          "text": "동특성이 양호하다"
+        },
+        {
+          "index": 3,
+          "text": "정특성이 양호하다."
+        },
+        {
+          "index": 4,
+          "text": "다른 것에 비하여 크기가 크다."
+        }
+      ],
+      "answer": 4,
+      "explanation": ""
+    },
+    {
+      "number": 24,
+      "question": "수동력이 7.36kW이고, 효율이 80%인 펌프의 축동력은 몇 kW인가?",
+      "options": [
+        {
+          "index": 1,
+          "text": "4.8"
+        },
+        {
+          "index": 2,
+          "text": "5.9"
+        },
+        {
+          "index": 3,
+          "text": "9.2"
+        },
+        {
+          "index": 4,
+          "text": "11.5"
+        }
+      ],
+      "answer": 3,
+      "explanation": ""
+    },
+    {
+      "number": 25,
+      "question": "고온·고압에서 수소를 사용하는 장치는 일반적으로 어떤 재 료를 사용하는가?",
+      "options": [
+        {
+          "index": 1,
+          "text": "탄소강"
+        },
+        {
+          "index": 2,
+          "text": "크롬강"
+        },
+        {
+          "index": 3,
+          "text": "조강"
+        },
+        {
+          "index": 4,
+          "text": "실리콘강"
+        }
+      ],
+      "answer": 2,
+      "explanation": ""
+    },
+    {
+      "number": 26,
+      "question": "증기압축 냉동사이클에서 냉매가 순환되는 경로를 옳게 나 타낸 것은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "압축기 → 증발기 → 팽창밸브 → 응축기"
+        },
+        {
+          "index": 2,
+          "text": "증발기 → 압축기 → 응축기 → 팽창밸브"
+        },
+        {
+          "index": 3,
+          "text": "증발기 → 응축기 → 팽창밸브 → 압축기"
+        },
+        {
+          "index": 4,
+          "text": "압축기 → 응축기 → 증발기 → 팽창밸브"
+        }
+      ],
+      "answer": 2,
+      "explanation": ""
+    },
+    {
+      "number": 27,
+      "question": "어떤 냉동기에서 0°C의 물이 0°C의 얼음 2톤을 만드는데 50kWh의 일이 소요된다면 이 냉동기의 성능계수는? (단, 물의 융해열은 80kcal/kg이다.)",
+      "options": [
+        {
+          "index": 1,
+          "text": "2.05"
+        },
+        {
+          "index": 2,
+          "text": "2.56"
+        },
+        {
+          "index": 3,
+          "text": "3.19"
+        },
+        {
+          "index": 4,
+          "text": "3.72"
+        }
+      ],
+      "answer": 4,
+      "explanation": ""
+    },
+    {
+      "number": 28,
+      "question": "하부의 가스실과 상부의 공기실이 자유 피스톤에 의해 나누 어지고 가스출입에 따라 피스톤이 상하로 움직이는 구조의 가스홀더(holder)는?",
+      "options": [
+        {
+          "index": 1,
+          "text": "유수식 가스홀더"
+        },
+        {
+          "index": 2,
+          "text": "무수식 가스홀더"
+        },
+        {
+          "index": 3,
+          "text": "구형 가스홀더"
+        },
+        {
+          "index": 4,
+          "text": "원관형 가스홀더"
+        }
+      ],
+      "answer": 2,
+      "explanation": ""
+    },
+    {
+      "number": 29,
+      "question": "고압가스 설비 내에서 이상사태가 발생한 경우 긴급이송설 비에 의하여 이송되는 가스를 안전하게 연소시킬 수 있는 안전장치는?",
+      "options": [
+        {
+          "index": 1,
+          "text": "벤트스택"
+        },
+        {
+          "index": 2,
+          "text": "플레어스택"
+        },
+        {
+          "index": 3,
+          "text": "인터록기구"
+        },
+        {
+          "index": 4,
+          "text": "긴급차단장치"
+        }
+      ],
+      "answer": 2,
+      "explanation": ""
+    },
+    {
+      "number": 30,
+      "question": "기계재료에 가하는 하중이 점차 증가하면 재료의 변형이 증 가하지만, 하중이 어느 정도까지 증가하면 하중은 더 이상 증가하지 않아도 변형하는 경우가 있는데 이때를 무엇이라 하는가?",
+      "options": [
+        {
+          "index": 1,
+          "text": "크리프"
+        },
+        {
+          "index": 2,
+          "text": "항복점"
+        },
+        {
+          "index": 3,
+          "text": "탄성한도"
+        },
+        {
+          "index": 4,
+          "text": "피로한도"
+        }
+      ],
+      "answer": 2,
+      "explanation": ""
+    },
+    {
+      "number": 31,
+      "question": "전기방식법 중 유전양극법에 대한 설명으로 틀린 것은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "설치가 간편하다."
+        },
+        {
+          "index": 2,
+          "text": "과방식의 우려가 없다."
+        },
+        {
+          "index": 3,
+          "text": "전위구배가 적은 장소에 적당하다."
+        },
+        {
+          "index": 4,
+          "text": "도장이 나쁜 배관에서도 효과범위가 크다."
+        }
+      ],
+      "answer": 4,
+      "explanation": ""
+    },
+    {
+      "number": 32,
+      "question": "가스도매사업자의 공급시설 중 배관에 대한 용접방법의 기 준으로 옳은 것은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "용접방법은 티그 용접 또는 이와 동등 이상의 강도를 갖 는 용접방법으로 한다."
+        },
+        {
+          "index": 2,
+          "text": "배관 상호의 길이 이음매는 원주방향 에서 원칙적으로 30㎜ 이상 떨어지게 한다."
+        },
+        {
+          "index": 3,
+          "text": "배관의 용접은 지그(jig)를 사용하여 위쪽방향에서부터 정확하게 위치를 맞춘다."
+        },
+        {
+          "index": 4,
+          "text": "두께가 다른 배관의 맞대기 이음에서는 길이방향의 기울 기를 1/3 이하로 한다."
+        }
+      ],
+      "answer": 4,
+      "explanation": ""
+    },
+    {
+      "number": 33,
+      "question": "다음 중 LP가스 압축기의 내부 윤활유로 사용되는 것은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "화이트유"
+        },
+        {
+          "index": 2,
+          "text": "진한 황산"
+        },
+        {
+          "index": 3,
+          "text": "식물성유"
+        },
+        {
+          "index": 4,
+          "text": "물 또는 10% 이하의 묽은 글리세린수"
+        }
+      ],
+      "answer": 3,
+      "explanation": ""
+    },
+    {
+      "number": 34,
+      "question": "정압기의 정특성(靜特性)을 옳게 설명한 것은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "메인밸브의 열림과 유량의 관계를 말한다."
+        },
+        {
+          "index": 2,
+          "text": "메인밸브의 닫힘과 유량의 관계를 말한다."
+        },
+        {
+          "index": 3,
+          "text": "메인밸브의 부하변동과 유량의 관계를 말한다."
+        },
+        {
+          "index": 4,
+          "text": "정상상태에 있어서 유량과 2차 압력의 관계를 말한다."
+        }
+      ],
+      "answer": 4,
+      "explanation": ""
+    },
+    {
+      "number": 35,
+      "question": "다음 중 터보식 펌프의 종류가 아닌 것은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "원심식"
+        },
+        {
+          "index": 2,
+          "text": "사류식"
+        },
+        {
+          "index": 3,
+          "text": "축류식"
+        },
+        {
+          "index": 4,
+          "text": "회전식"
+        }
+      ],
+      "answer": 4,
+      "explanation": ""
+    },
+    {
+      "number": 36,
+      "question": "개방형 가스온수기에 반드시 부착하지 않아도 되는 안전장 치는?",
+      "options": [
+        {
+          "index": 1,
+          "text": "소화안전장치"
+        },
+        {
+          "index": 2,
+          "text": "과열방지장치"
+        },
+        {
+          "index": 3,
+          "text": "불완전연소방지장치"
+        },
+        {
+          "index": 4,
+          "text": "전도안전장치"
+        }
+      ],
+      "answer": 4,
+      "explanation": ""
+    },
+    {
+      "number": 37,
+      "question": "배관의 규격기호와 그 용도 및 사용조건에 대한 설명으로 틀린 것은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "SPPS는 350°C 이하의 온도에서, 압력 9.8N/mm 2 이하 에 사용한다."
+        },
+        {
+          "index": 2,
+          "text": "SPPH는 350°C 이하의 온도에서, 압력 9.8N/mm 2 이하 에 사용한다."
+        },
+        {
+          "index": 3,
+          "text": "SPLT는 빙점 이하의 특히 낮은 온도의 배관에 사용한다."
+        },
+        {
+          "index": 4,
+          "text": "SPPW는 정수두 100m 이하의 급수배관에 사용한다."
+        }
+      ],
+      "answer": 2,
+      "explanation": ""
+    },
+    {
+      "number": 38,
+      "question": "최고충전압력이 18MPa인 용기에 압축가스를 충전할 때 안 전밸브가 작동되어야 하는 압력은 몇 MPa인가?",
+      "options": [
+        {
+          "index": 1,
+          "text": "24"
+        },
+        {
+          "index": 2,
+          "text": "27"
+        },
+        {
+          "index": 3,
+          "text": "30"
+        },
+        {
+          "index": 4,
+          "text": "36"
+        }
+      ],
+      "answer": 1,
+      "explanation": ""
+    },
+    {
+      "number": 39,
+      "question": "공기액화분리장치에서 탄산가스를 제거하기 위한 물질은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "실리카겔"
+        },
+        {
+          "index": 2,
+          "text": "염화칼슘"
+        },
+        {
+          "index": 3,
+          "text": "활성알루미나"
+        },
+        {
+          "index": 4,
+          "text": "수산화나트륨"
+        }
+      ],
+      "answer": 4,
+      "explanation": ""
+    },
+    {
+      "number": 40,
+      "question": "소성가공 등으로 거칠어진 조직을 정상상태로 하거나 조직 을 미세화하기 위한 목적으로 하는 열처리는?",
+      "options": [
+        {
+          "index": 1,
+          "text": "Marquenching"
+        },
+        {
+          "index": 2,
+          "text": "Quenching"
+        },
+        {
+          "index": 3,
+          "text": "Tempering"
+        },
+        {
+          "index": 4,
+          "text": "Normalizing"
+        }
+      ],
+      "answer": 4,
+      "explanation": ""
+    },
+    {
+      "number": 41,
+      "question": "다음 중 독성 가스만으로 나열된 것은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "포스겐, 수소, 아세틸렌, 암모니아, 염소"
+        },
+        {
+          "index": 2,
+          "text": "석탄가스, 암모니아, 프로판, 염소, 이산화탄소"
+        },
+        {
+          "index": 3,
+          "text": "포스겐, 일산화탄소, 염소, 암모니아, 시안화수소"
+        },
+        {
+          "index": 4,
+          "text": "암모니아, 염소, 프로판, 수소, 알진, 이산화탄소"
+        }
+      ],
+      "answer": 3,
+      "explanation": ""
+    },
+    {
+      "number": 1,
+      "question": "8vol%라면 높이 2m, 넓이 9m 2 , 온도 20°C인 주방에 최소 몇 g의 가스가 유출되면 폭발할 가능성이 있는가? (단, 이 상기체로 가정한다.)",
+      "options": [
+        {
+          "index": 1,
+          "text": "405"
+        },
+        {
+          "index": 2,
+          "text": "593"
+        },
+        {
+          "index": 3,
+          "text": "688"
+        },
+        {
+          "index": 4,
+          "text": "782"
+        }
+      ],
+      "answer": 3,
+      "explanation": ""
+    },
+    {
+      "number": 43,
+      "question": "시안화수소를 충전, 저장하는 시설에서 가스누출에 따른 사 고예방을 위하여 누출검사 시 사용하는 시험지(액)는?",
+      "options": [
+        {
+          "index": 1,
+          "text": "묽은 염산용액"
+        },
+        {
+          "index": 2,
+          "text": "질산구리벤젠지"
+        },
+        {
+          "index": 3,
+          "text": "수산화나트륨용액"
+        },
+        {
+          "index": 4,
+          "text": "묽은 질산용액"
+        }
+      ],
+      "answer": 2,
+      "explanation": ""
+    },
+    {
+      "number": 44,
+      "question": "가연성 가스 충전시설의 고압가스 설비는 그 외면으로부터 산소 충전시설의 고압가스 설비와 몇 m 이상의 거리를 유 지하여야 하는가?",
+      "options": [
+        {
+          "index": 1,
+          "text": "3"
+        },
+        {
+          "index": 2,
+          "text": "5"
+        },
+        {
+          "index": 3,
+          "text": "8"
+        },
+        {
+          "index": 4,
+          "text": "10"
+        }
+      ],
+      "answer": 4,
+      "explanation": ""
+    },
+    {
+      "number": 45,
+      "question": "냉매가스, 흡수용액 및 피냉각물에 접하는 부분의 재료는 냉매가스의 종류에 따라 사용하지 못하는 것이 있다. 냉매 가스로 염화 메탄을 사용하는 냉동기에 사용이 불가능한 재 료는?",
+      "options": [
+        {
+          "index": 1,
+          "text": "탄소강재"
+        },
+        {
+          "index": 2,
+          "text": "주강품"
+        },
+        {
+          "index": 3,
+          "text": "구리"
+        },
+        {
+          "index": 4,
+          "text": "알루미늄합금"
+        }
+      ],
+      "answer": 4,
+      "explanation": ""
+    },
+    {
+      "number": 46,
+      "question": "후부취출식 탱크에서 탱크 주밸브 및 긴급 차단장치에 속하 는 밸브와 차량의 뒷범퍼와의 수평거리는 규정상 몇 cm 이 상 떨어져 있어야 하는가?",
+      "options": [
+        {
+          "index": 1,
+          "text": "20"
+        },
+        {
+          "index": 2,
+          "text": "30"
+        },
+        {
+          "index": 3,
+          "text": "40"
+        },
+        {
+          "index": 4,
+          "text": "60"
+        }
+      ],
+      "answer": 3,
+      "explanation": ""
+    },
+    {
+      "number": 47,
+      "question": "다음 액화가스 저장탱크 중 방류둑을 설치하여야 하는 것 은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "저장능력이 5톤인 염소저장탱크"
+        },
+        {
+          "index": 2,
+          "text": "저장능력이 8백톤인 산소저장탱크"
+        },
+        {
+          "index": 3,
+          "text": "저장능력이 5백톤인 수소저장탱크"
+        },
+        {
+          "index": 4,
+          "text": "저장능력이 9백톤인 프로판저장탱크"
+        }
+      ],
+      "answer": 1,
+      "explanation": ""
+    },
+    {
+      "number": 48,
+      "question": "다음 중 아세틸렌의 압축 시 희석제로 사용 되지 않는 것 은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "N 2"
+        },
+        {
+          "index": 2,
+          "text": "CH 4"
+        },
+        {
+          "index": 3,
+          "text": "C 2 H 4"
+        },
+        {
+          "index": 4,
+          "text": "H 2"
+        }
+      ],
+      "answer": 4,
+      "explanation": ""
+    },
+    {
+      "number": 49,
+      "question": "LPG 압력조정기를 제조하고자 하는 자가 반드시 갖추어야 할 검사설비가 아닌 것은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "유량측정설비"
+        },
+        {
+          "index": 2,
+          "text": "과류차단성능시험설비"
+        },
+        {
+          "index": 3,
+          "text": "내압시험설비"
+        },
+        {
+          "index": 4,
+          "text": "기밀시험설비"
+        }
+      ],
+      "answer": 2,
+      "explanation": ""
+    },
+    {
+      "number": 50,
+      "question": "Al 합금으로 제조한 용접용기에 대한 신규검사(시험) 항목이 아닌 것은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "외관검사"
+        },
+        {
+          "index": 2,
+          "text": "인장시험"
+        },
+        {
+          "index": 3,
+          "text": "충격시험"
+        },
+        {
+          "index": 4,
+          "text": "압궤시험"
+        }
+      ],
+      "answer": 3,
+      "explanation": ""
+    },
+    {
+      "number": 51,
+      "question": "20kg의 LPG가 누출하여 폭발할 경우 TNT 폭발위력으로 환 산하면 TNT 약 몇 kg에 해당하는가? (단, LPG의 폭발효율 은 3%이고 발열량은 12000kcal/kg, TNT의 연소열은 1100kcal/kg이다.)",
+      "options": [
+        {
+          "index": 1,
+          "text": "0.6"
+        },
+        {
+          "index": 2,
+          "text": "6.5"
+        },
+        {
+          "index": 3,
+          "text": "16.2"
+        },
+        {
+          "index": 4,
+          "text": "26.6"
+        }
+      ],
+      "answer": 2,
+      "explanation": ""
+    },
+    {
+      "number": 52,
+      "question": "다음 가스용품 중 합격표시를 각인으로 하여야 하는 것은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "배관용 밸브"
+        },
+        {
+          "index": 2,
+          "text": "전기절연 이음관"
+        },
+        {
+          "index": 3,
+          "text": "강제혼합식 가스버너"
+        },
+        {
+          "index": 4,
+          "text": "금속플렉시블 호스"
+        }
+      ],
+      "answer": 1,
+      "explanation": ""
+    },
+    {
+      "number": 53,
+      "question": "차량에 고정된 탱크를 사용하여 고압가스를 운반할 경우 충 전관에 반드시 설치하지 않아도 되는 안전장치는?",
+      "options": [
+        {
+          "index": 1,
+          "text": "안전밸브"
+        },
+        {
+          "index": 2,
+          "text": "압력계"
+        },
+        {
+          "index": 3,
+          "text": "긴급탈압밸브"
+        },
+        {
+          "index": 4,
+          "text": "역화방지기"
+        }
+      ],
+      "answer": 4,
+      "explanation": ""
+    },
+    {
+      "number": 54,
+      "question": "부피비로 CO 2 32vol%, O 2 5vol%, N 2 63vol%인 혼합기체의 평균 분자량은 약 얼마인가?",
+      "options": [
+        {
+          "index": 1,
+          "text": "26.2"
+        },
+        {
+          "index": 2,
+          "text": "33.3"
+        },
+        {
+          "index": 3,
+          "text": "35.4"
+        },
+        {
+          "index": 4,
+          "text": "37.5"
+        }
+      ],
+      "answer": 2,
+      "explanation": ""
+    },
+    {
+      "number": 55,
+      "question": "고압가스 일반제조시설에서 저장탱크 및 처리설비를 실내에 설치하는 경우에 대한 설명으로 틀린 것은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "저장탱크실 및 처리설비실은 천장·벽 및 바닥의 두께가 30cm 이상인 철근 콘크리트로 만든 실로서 방수처리가 된 것일 것"
+        },
+        {
+          "index": 2,
+          "text": "저장탱크 및 처리설비실은 각각 구분하여 설치하고, 자 연통풍시설을 갖출 것"
+        },
+        {
+          "index": 3,
+          "text": "저장탱크의 정상부와 저장탱크실 천장과의 거리는 60cm 이상으로 할 것"
+        },
+        {
+          "index": 4,
+          "text": "저장탱크에 설치한 안전밸브는 지상 5m 이상의 높이에 방출구가 있는 가스방출관을 설치 할 것"
+        }
+      ],
+      "answer": 2,
+      "explanation": ""
+    },
+    {
+      "number": 56,
+      "question": "다음 중 고압가스안전관리법상 가스저장탱크 설치 시 내진 설계를 하여야 하는 저장탱크는? (단, 비가연성 및 비독성인 경우는 제외한다.)",
+      "options": [
+        {
+          "index": 1,
+          "text": "저장능력이 5톤 이상 또는 500m 3 이상인 저장탱크"
+        },
+        {
+          "index": 2,
+          "text": "저장능력이 3톤 이상 또는 300m 3 이상인 저장탱크"
+        },
+        {
+          "index": 3,
+          "text": "저장능력이 2톤 이상 또는 200m 3 이상인 저장탱크"
+        },
+        {
+          "index": 4,
+          "text": "저장능력이 1톤 이상 또는 100m 3 이상인 저장탱크"
+        }
+      ],
+      "answer": 1,
+      "explanation": ""
+    },
+    {
+      "number": 57,
+      "question": "시안화수소를 용기에 충전할 때 안정제로 첨가하는 것은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "탄산가스 또는 일산화탄소"
+        },
+        {
+          "index": 2,
+          "text": "메탄 또는 에틸렌"
+        },
+        {
+          "index": 3,
+          "text": "질소"
+        },
+        {
+          "index": 4,
+          "text": "아황산가스 또는 황산"
+        }
+      ],
+      "answer": 4,
+      "explanation": ""
+    },
+    {
+      "number": 58,
+      "question": "LPG 자동차의 용기에 설치하는 과충전방지장치에 대한 설 명으로 옳지 않은 것은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "충전량이 용기 내용적의 85%를 충전한 경우에는 더 이 상 충전이 되지 않아야 한다."
+        },
+        {
+          "index": 2,
+          "text": "눈으로 보아 사용상 유해한 흠, 균열 등의 결함이 없어 야 한다."
+        },
+        {
+          "index": 3,
+          "text": "설정점은 용이하게 변경할 수 있어야 한다."
+        },
+        {
+          "index": 4,
+          "text": "3MPa 이상의 압력으로 실시하는 내압 시험에 합격한 것 이어야 한다."
+        }
+      ],
+      "answer": 3,
+      "explanation": ""
+    },
+    {
+      "number": 59,
+      "question": "액화석유가스 압력조정기 중 1단 감압식 저압조정기의 조정 압력은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "2.3~3.3MPa"
+        },
+        {
+          "index": 2,
+          "text": "5~30MPa"
+        },
+        {
+          "index": 3,
+          "text": "2.3~3.3kPa"
+        },
+        {
+          "index": 4,
+          "text": "5~30kPa"
+        }
+      ],
+      "answer": 3,
+      "explanation": ""
+    },
+    {
+      "number": 60,
+      "question": "독성 가스로 분류되는 허용농도(TWA)의 기준은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "50ppm 이하"
+        },
+        {
+          "index": 2,
+          "text": "100ppm 이하"
+        },
+        {
+          "index": 3,
+          "text": "200ppm 이하"
+        },
+        {
+          "index": 4,
+          "text": "300ppm 이하"
+        }
+      ],
+      "answer": 3,
+      "explanation": ""
+    },
+    {
+      "number": 61,
+      "question": "되먹임 제어에 대한 설명으로 옳은 것은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "열린 회로제어이다."
+        },
+        {
+          "index": 2,
+          "text": "비교부가 필요 없다."
+        },
+        {
+          "index": 3,
+          "text": "되먹임이란 출력신호를 입력신호로 다시 되돌려 보내는 것을 말한다."
+        },
+        {
+          "index": 4,
+          "text": "되먹임 제어시스템은 선형 제어시스템에 속한다."
+        }
+      ],
+      "answer": 3,
+      "explanation": ""
+    },
+    {
+      "number": 62,
+      "question": "다음 중 정도가 가장 높은 가스미터는?",
+      "options": [
+        {
+          "index": 1,
+          "text": "습식 가스미터"
+        },
+        {
+          "index": 2,
+          "text": "벤투리미터"
+        },
+        {
+          "index": 3,
+          "text": "오리피스미터"
+        },
+        {
+          "index": 4,
+          "text": "루트미터"
+        }
+      ],
+      "answer": 1,
+      "explanation": ""
+    },
+    {
+      "number": 63,
+      "question": "가스계측기기의 감도에 대한 설명으로 옳은 것은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "지시량의 변화에 대한 측정량의 변화의 비로 나타낸다."
+        },
+        {
+          "index": 2,
+          "text": "감도가 좋으면 측정시간이 짧아지고 측정범위는 넓어진 다."
+        },
+        {
+          "index": 3,
+          "text": "계측기가 측정량의 변화에 민감한 정도를 나타내는 값이 다."
+        },
+        {
+          "index": 4,
+          "text": "측정결과에 대한 신뢰도를 수량적으로 나타내는 척도이 다."
+        }
+      ],
+      "answer": 3,
+      "explanation": ""
+    },
+    {
+      "number": 64,
+      "question": "습도에 대한 설명 중 틀린 것은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "상대습도는 포화증기량과 습가스 수증기와의 중량비이 다."
+        },
+        {
+          "index": 2,
+          "text": "절대습도는 습공기 1kg에 대한 수증기의 양과의 비율이 다."
+        },
+        {
+          "index": 3,
+          "text": "비교습도는 습공기의 절대습도와 포화 증기의 절대습도 와의 비이다."
+        },
+        {
+          "index": 4,
+          "text": "온도가 상승하면 상대습도는 감소한다."
+        }
+      ],
+      "answer": 2,
+      "explanation": ""
+    },
+    {
+      "number": 65,
+      "question": "다음 중 램버트-비어의 법칙을 이용한 분석법은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "분광광도법"
+        },
+        {
+          "index": 2,
+          "text": "분별연소법"
+        },
+        {
+          "index": 3,
+          "text": "전위차적정법"
+        },
+        {
+          "index": 4,
+          "text": "가스 크로마토그래피법"
+        }
+      ],
+      "answer": 1,
+      "explanation": ""
+    },
+    {
+      "number": 67,
+      "question": "가스 크로마토그래피에서 사용하는 불꽃이 온화검출기에 대 한 설명 중 틀린 것은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "카르보닐계, 알코올계는 불꽃 중에서 이온을 잘 생성하 지 않으므로 감도가 낮다."
+        },
+        {
+          "index": 2,
+          "text": "CO 2 , SOx 등은 연소되지 않고, 이온화되지 않으므로 검 출되지 않는다."
+        },
+        {
+          "index": 3,
+          "text": "감도가 좋고, 선형 감도범위가 넓으며 잡음이 적다."
+        },
+        {
+          "index": 4,
+          "text": "물에 대한 감도가 좋아 자연수의 분석에 유효하다."
+        }
+      ],
+      "answer": 4,
+      "explanation": ""
+    },
+    {
+      "number": 68,
+      "question": "비중이 0.8인 액체의 압력이 2kg/cm 2 일 때 두(head)는 약 몇 m인가?",
+      "options": [
+        {
+          "index": 1,
+          "text": "16"
+        },
+        {
+          "index": 2,
+          "text": "25"
+        },
+        {
+          "index": 3,
+          "text": "32"
+        },
+        {
+          "index": 4,
+          "text": "40"
+        }
+      ],
+      "answer": 2,
+      "explanation": ""
+    },
+    {
+      "number": 69,
+      "question": "염화제1구리 착염지로 아세틸렌가스를 검지할 때 착염지의 반응 색깔은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "흑색"
+        },
+        {
+          "index": 2,
+          "text": "청색"
+        },
+        {
+          "index": 3,
+          "text": "적색"
+        },
+        {
+          "index": 4,
+          "text": "황색"
+        }
+      ],
+      "answer": 3,
+      "explanation": ""
+    },
+    {
+      "number": 70,
+      "question": "계량기 형식승인번호의 표시방법에는 계량기의 종류별로 그 기호가 정해져 있다. 다음 중 가스미터는 어떻게 표시하는 가?",
+      "options": [
+        {
+          "index": 1,
+          "text": "G"
+        },
+        {
+          "index": 2,
+          "text": "N"
+        },
+        {
+          "index": 3,
+          "text": "K"
+        },
+        {
+          "index": 4,
+          "text": "H"
+        }
+      ],
+      "answer": 4,
+      "explanation": ""
+    },
+    {
+      "number": 71,
+      "question": "평균유속이 5m/s인 원관에서 20kg/s의 물이 흐르도록 하려 면 관의 지름은 약 몇 ㎜로 해야 하는가?",
+      "options": [
+        {
+          "index": 1,
+          "text": "65"
+        },
+        {
+          "index": 2,
+          "text": "68"
+        },
+        {
+          "index": 3,
+          "text": "71"
+        },
+        {
+          "index": 4,
+          "text": "76"
+        }
+      ],
+      "answer": 3,
+      "explanation": ""
+    },
+    {
+      "number": 72,
+      "question": "계량에 관한 법률의 목적으로 가장 거리가 먼 것은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "계량의 기준을 정함"
+        },
+        {
+          "index": 2,
+          "text": "공정한 상거래 질서유지"
+        },
+        {
+          "index": 3,
+          "text": "산업의 선진화 기여"
+        },
+        {
+          "index": 4,
+          "text": "분쟁의 협의 조정"
+        }
+      ],
+      "answer": 4,
+      "explanation": ""
+    },
+    {
+      "number": 73,
+      "question": "다음 중 압력의 단위는?",
+      "options": [
+        {
+          "index": 1,
+          "text": "Pascal"
+        },
+        {
+          "index": 2,
+          "text": "Watt"
+        },
+        {
+          "index": 3,
+          "text": "Dyne"
+        },
+        {
+          "index": 4,
+          "text": "Joule"
+        }
+      ],
+      "answer": 1,
+      "explanation": ""
+    },
+    {
+      "number": 74,
+      "question": "다음 중 가스유량 측정기구가 아닌 것은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "막식 미터"
+        },
+        {
+          "index": 2,
+          "text": "토크미터"
+        },
+        {
+          "index": 3,
+          "text": "델타식 미터"
+        },
+        {
+          "index": 4,
+          "text": "회전자식 미터"
+        }
+      ],
+      "answer": 2,
+      "explanation": ""
+    },
+    {
+      "number": 75,
+      "question": "시퀀스 제어에서 사용하는 논리회로의 기호가 아닌 것은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "NAND"
+        },
+        {
+          "index": 2,
+          "text": "EX-AND"
+        },
+        {
+          "index": 3,
+          "text": "EX-OR"
+        },
+        {
+          "index": 4,
+          "text": "NOT"
+        }
+      ],
+      "answer": 2,
+      "explanation": ""
+    },
+    {
+      "number": 76,
+      "question": "다음 중 방사 고온계에 적용되는 이론은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "스테판-볼츠만 법칙"
+        },
+        {
+          "index": 2,
+          "text": "필터효과"
+        },
+        {
+          "index": 3,
+          "text": "윈-프랑크 법칙"
+        },
+        {
+          "index": 4,
+          "text": "제백효과"
+        }
+      ],
+      "answer": 1,
+      "explanation": ""
+    },
+    {
+      "number": 77,
+      "question": "다음 중 정도가 높아 미압 측정용으로 가장 적당한 압력계 는?",
+      "options": [
+        {
+          "index": 1,
+          "text": "부르돈관식 압력계"
+        },
+        {
+          "index": 2,
+          "text": "경사관식 압력계"
+        },
+        {
+          "index": 3,
+          "text": "침종식 압력계"
+        },
+        {
+          "index": 4,
+          "text": "막식 압력계"
+        }
+      ],
+      "answer": 2,
+      "explanation": ""
+    },
+    {
+      "number": 78,
+      "question": "헴펠(Hempel)법에 의한 가스분석 시 성분 분석의 순서는?",
+      "options": [
+        {
+          "index": 1,
+          "text": "일산화탄소 → 이산화탄소 → 탄화수소 → 산소"
+        },
+        {
+          "index": 2,
+          "text": "일산화탄소 → 산소 → 이산화탄소 → 탄화수소"
+        },
+        {
+          "index": 3,
+          "text": "이산화탄소 → 탄화수소 → 산소 → 일산화탄소"
+        },
+        {
+          "index": 4,
+          "text": "이산화탄소 → 산소 → 일산화탄소 → 탄화수소"
+        }
+      ],
+      "answer": 3,
+      "explanation": ""
+    },
+    {
+      "number": 79,
+      "question": "가스미터의 구비조건으로 틀린 것은?",
+      "options": [
+        {
+          "index": 1,
+          "text": "내구성이 클 것"
+        },
+        {
+          "index": 2,
+          "text": "소형으로 계량용량이 적을 것"
+        },
+        {
+          "index": 3,
+          "text": "구조가 간단하고, 수리가 용이할 것"
+        },
+        {
+          "index": 4,
+          "text": "감도가 예민하고, 압력손실이 적을 것"
+        }
+      ],
+      "answer": 2,
+      "explanation": ""
+    },
+    {
+      "number": 80,
+      "question": "다음 중 운동하는 유체의 에너지 법칙을 이용한 유량계는?",
+      "options": [
+        {
+          "index": 1,
+          "text": "면적식"
+        },
+        {
+          "index": 2,
+          "text": "용적식"
+        },
+        {
+          "index": 3,
+          "text": "차압식"
+        },
+        {
+          "index": 4,
+          "text": "터빈식 기출문제 및 해설집 다운로드 : www.comcbt.com/xe 종이 문제집이 아닌 인터넷으로 문제를 풀고 자동으로 채점하며 모의고사, 오답 노트, 해설까지 제공하는 무료 기출문제 학습 프 로그램으로 실제 시험에서 사용하는 OMR 형식의 CBT를 제공합 니다. PC 버전 및 모바일 버전 완벽 연동 교사용/학생용 관리기능도 제공합니다. 에서 확인하세요. 12345678910"
+        },
+        {
+          "index": 3,
+          "text": ""
+        },
+        {
+          "index": 4,
+          "text": ""
+        },
+        {
+          "index": 1,
+          "text": ""
+        },
+        {
+          "index": 3,
+          "text": ""
+        },
+        {
+          "index": 1,
+          "text": ""
+        },
+        {
+          "index": 4,
+          "text": ""
+        },
+        {
+          "index": 1,
+          "text": ""
+        },
+        {
+          "index": 1,
+          "text": ""
+        },
+        {
+          "index": 4,
+          "text": ""
+        },
+        {
+          "index": 3,
+          "text": "11121314151617181920"
+        },
+        {
+          "index": 3,
+          "text": ""
+        },
+        {
+          "index": 2,
+          "text": ""
+        },
+        {
+          "index": 2,
+          "text": ""
+        },
+        {
+          "index": 2,
+          "text": ""
+        },
+        {
+          "index": 2,
+          "text": ""
+        },
+        {
+          "index": 3,
+          "text": ""
+        },
+        {
+          "index": 3,
+          "text": ""
+        },
+        {
+          "index": 2,
+          "text": ""
+        },
+        {
+          "index": 3,
+          "text": ""
+        },
+        {
+          "index": 1,
+          "text": "21222324252627282930"
+        },
+        {
+          "index": 4,
+          "text": ""
+        },
+        {
+          "index": 3,
+          "text": ""
+        },
+        {
+          "index": 4,
+          "text": ""
+        },
+        {
+          "index": 3,
+          "text": ""
+        },
+        {
+          "index": 2,
+          "text": ""
+        },
+        {
+          "index": 2,
+          "text": ""
+        },
+        {
+          "index": 4,
+          "text": ""
+        },
+        {
+          "index": 2,
+          "text": ""
+        },
+        {
+          "index": 2,
+          "text": ""
+        },
+        {
+          "index": 2,
+          "text": "31323334353637383940"
+        },
+        {
+          "index": 4,
+          "text": ""
+        },
+        {
+          "index": 4,
+          "text": ""
+        },
+        {
+          "index": 3,
+          "text": ""
+        },
+        {
+          "index": 4,
+          "text": ""
+        },
+        {
+          "index": 4,
+          "text": ""
+        },
+        {
+          "index": 4,
+          "text": ""
+        },
+        {
+          "index": 2,
+          "text": ""
+        },
+        {
+          "index": 1,
+          "text": ""
+        },
+        {
+          "index": 4,
+          "text": ""
+        },
+        {
+          "index": 4,
+          "text": "41424344454647484950"
+        },
+        {
+          "index": 3,
+          "text": ""
+        },
+        {
+          "index": 3,
+          "text": ""
+        },
+        {
+          "index": 2,
+          "text": ""
+        },
+        {
+          "index": 4,
+          "text": ""
+        },
+        {
+          "index": 4,
+          "text": ""
+        },
+        {
+          "index": 3,
+          "text": ""
+        },
+        {
+          "index": 1,
+          "text": ""
+        },
+        {
+          "index": 4,
+          "text": ""
+        },
+        {
+          "index": 2,
+          "text": ""
+        },
+        {
+          "index": 3,
+          "text": "51525354555657585960"
+        },
+        {
+          "index": 2,
+          "text": ""
+        },
+        {
+          "index": 1,
+          "text": ""
+        },
+        {
+          "index": 4,
+          "text": ""
+        },
+        {
+          "index": 2,
+          "text": ""
+        },
+        {
+          "index": 2,
+          "text": ""
+        },
+        {
+          "index": 1,
+          "text": ""
+        },
+        {
+          "index": 4,
+          "text": ""
+        },
+        {
+          "index": 3,
+          "text": ""
+        },
+        {
+          "index": 3,
+          "text": ""
+        },
+        {
+          "index": 3,
+          "text": "61626364656667686970"
+        },
+        {
+          "index": 3,
+          "text": ""
+        },
+        {
+          "index": 1,
+          "text": ""
+        },
+        {
+          "index": 3,
+          "text": ""
+        },
+        {
+          "index": 2,
+          "text": ""
+        },
+        {
+          "index": 1,
+          "text": ""
+        },
+        {
+          "index": 4,
+          "text": ""
+        },
+        {
+          "index": 4,
+          "text": ""
+        },
+        {
+          "index": 2,
+          "text": ""
+        },
+        {
+          "index": 3,
+          "text": ""
+        },
+        {
+          "index": 4,
+          "text": "71727374757677787980"
+        },
+        {
+          "index": 3,
+          "text": ""
+        },
+        {
+          "index": 4,
+          "text": ""
+        },
+        {
+          "index": 1,
+          "text": ""
+        },
+        {
+          "index": 2,
+          "text": ""
+        },
+        {
+          "index": 2,
+          "text": ""
+        },
+        {
+          "index": 1,
+          "text": ""
+        },
+        {
+          "index": 2,
+          "text": ""
+        },
+        {
+          "index": 3,
+          "text": ""
+        },
+        {
+          "index": 2,
+          "text": ""
+        },
+        {
+          "index": 3,
+          "text": ""
+        }
+      ],
+      "answer": 3,
+      "explanation": ""
+    }
+  ]
+}

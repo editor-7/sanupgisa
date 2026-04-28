@@ -1,0 +1,19 @@
+{
+  "name": "gassanupgisa",
+  "version": "1.0.0",
+  "description": "Gas Industry 기사 기출 문제 연습 사이트",
+  "main": "server.js",
+  "scripts": {
+    "parse": "node scripts/parse-pdf.js",
+    "parse:all": "node scripts/parse-all-pdfs.js",
+    "export:explanations": "node scripts/export-explanations-csv.js",
+    "import:explanations": "node scripts/import-explanations-csv.js",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "pdf-parse": "^1.1.1"
+  }
+}

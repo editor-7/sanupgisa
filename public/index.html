@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>가스산업기사 기출 연습</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>가스산업기사 기출 연습</h1>
+      <div class="card">
+        <label for="exam-select">회차 선택</label>
+        <select id="exam-select"></select>
+      </div>
+      <p id="meta" class="meta"></p>
+      <section id="question-card" class="card">
+        <h2 id="q-number"></h2>
+        <p id="q-text"></p>
+        <div id="options" class="options"></div>
+        <div class="actions">
+          <button id="check-btn">정답 확인</button>
+          <button id="next-btn">다음 문제</button>
+        </div>
+        <p id="feedback" class="feedback"></p>
+        <p id="explanation" class="explanation"></p>
+      </section>
+      <section class="card score">
+        <p id="progress"></p>
+        <p id="score"></p>
+      </section>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+  </html>
