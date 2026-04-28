@@ -9,7 +9,11 @@ let autoReadMode = false;
 let autoReadTimer = null;
 let selectedVoice = null;
 let ttsUnlocked = false;
-let lastSpokenText = "";
+
+const ua = navigator.userAgent || "";
+const isIOS = /iPhone|iPad|iPod/i.test(ua);
+const isSafari = /Safari/i.test(ua) && !/CriOS|FxiOS|EdgiOS/i.test(ua);
+const isIOSSafari = isIOS && isSafari;
 
 const el = {
   meta: document.getElementById("meta"),
@@ -151,8 +155,10 @@ function speakText(text, onDone) {
     return false;
   }
   try {
-    lastSpokenText = text;
-    window.speechSynthesis.cancel();
+    // iOS Safari는 직전 cancel이 재생 시작 실패를 만들 때가 있어 분기 처리
+    if (!isIOSSafari) {
+      window.speechSynthesis.cancel();
+    }
     window.speechSynthesis.resume();
     selectedVoice = selectedVoice || pickKoreanVoice();
     const chunks = splitSpeakText(text);
@@ -190,7 +196,8 @@ function speakText(text, onDone) {
       };
       window.speechSynthesis.speak(utter);
     };
-    speakNext();
+    // 일부 모바일은 음성큐 준비 시간이 필요해 첫 호출을 조금 지연하면 안정적이다.
+    setTimeout(speakNext, isIOSSafari ? 120 : 0);
     return true;
   } catch (err) {
     el.feedback.textContent = `음성 오류: ${String(err?.message || err)}`;
@@ -449,4 +456,8 @@ if ("speechSynthesis" in window) {
   window.speechSynthesis.onvoiceschanged = () => {
     selectedVoice = pickKoreanVoice();
   };
+  // 모바일에서 voices가 늦게 로드되는 경우를 대비한 1회 보정
+  setTimeout(() => {
+    if (!selectedVoice) selectedVoice = pickKoreanVoice();
+  }, 300);
 }
