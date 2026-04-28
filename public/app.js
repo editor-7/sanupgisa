@@ -16,8 +16,11 @@ const el = {
   explanation: document.getElementById("explanation"),
   progress: document.getElementById("progress"),
   score: document.getElementById("score"),
+  prevBtn: document.getElementById("prev-btn"),
   checkBtn: document.getElementById("check-btn"),
-  nextBtn: document.getElementById("next-btn")
+  nextBtn: document.getElementById("next-btn"),
+  jumpInput: document.getElementById("jump-input"),
+  jumpBtn: document.getElementById("jump-btn")
 };
 
 function resetProgress() {
@@ -115,6 +118,28 @@ el.checkBtn.addEventListener("click", () => {
 el.nextBtn.addEventListener("click", () => {
   if (!quiz) return;
   currentIndex = (currentIndex + 1) % quiz.questions.length;
+  renderQuestion();
+});
+
+el.prevBtn.addEventListener("click", () => {
+  if (!quiz) return;
+  currentIndex = (currentIndex - 1 + quiz.questions.length) % quiz.questions.length;
+  renderQuestion();
+});
+
+el.jumpBtn.addEventListener("click", () => {
+  if (!quiz) return;
+  const num = Number(el.jumpInput.value);
+  if (Number.isNaN(num)) {
+    el.feedback.textContent = "이동할 문제 번호를 입력해줘.";
+    return;
+  }
+  const idx = quiz.questions.findIndex((q) => q.number === num);
+  if (idx === -1) {
+    el.feedback.textContent = `${num}번 문제를 찾지 못했어.`;
+    return;
+  }
+  currentIndex = idx;
   renderQuestion();
 });
 

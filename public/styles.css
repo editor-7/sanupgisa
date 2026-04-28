@@ -84,6 +84,19 @@ select {
   gap: 8px;
 }
 
+.jump {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.jump input {
+  width: 140px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 10px;
+}
+
 button {
   border: none;
   border-radius: 8px;
@@ -95,6 +108,10 @@ button {
 
 #next-btn {
   background: #4b5563;
+}
+
+#prev-btn {
+  background: #6b7280;
 }
 
 .feedback {
