@@ -9,6 +9,7 @@ let autoReadMode = false;
 let autoReadTimer = null;
 let selectedVoice = null;
 let ttsUnlocked = false;
+let lastSpokenText = "";
 
 const el = {
   meta: document.getElementById("meta"),
@@ -57,8 +58,18 @@ function primeTtsEngine() {
   selectedVoice = pickKoreanVoice();
   // 모바일 브라우저에서 첫 사용자 터치 시 음성 엔진을 깨운다.
   if (ttsUnlocked) return;
-  window.speechSynthesis.cancel();
-  window.speechSynthesis.resume();
+  try {
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.resume();
+    const unlock = new SpeechSynthesisUtterance("음성 재생을 시작합니다");
+    if (selectedVoice) unlock.voice = selectedVoice;
+    unlock.lang = selectedVoice?.lang || "ko-KR";
+    unlock.rate = 1.2;
+    unlock.volume = 0.2;
+    window.speechSynthesis.speak(unlock);
+  } catch (_) {
+    // ignore unlock errors
+  }
   ttsUnlocked = true;
 }
 
@@ -140,6 +151,7 @@ function speakText(text, onDone) {
     return false;
   }
   try {
+    lastSpokenText = text;
     window.speechSynthesis.cancel();
     window.speechSynthesis.resume();
     selectedVoice = selectedVoice || pickKoreanVoice();
@@ -154,6 +166,8 @@ function speakText(text, onDone) {
       if (selectedVoice) utter.voice = selectedVoice;
       utter.lang = selectedVoice?.lang || "ko-KR";
       utter.rate = 1;
+      utter.pitch = 1;
+      utter.volume = 1;
       utter.onend = () => {
         i += 1;
         if (i >= chunks.length) {
@@ -163,7 +177,15 @@ function speakText(text, onDone) {
         speakNext();
       };
       utter.onerror = () => {
-        el.feedback.textContent = "모바일 음성 시작 실패. 문제 읽기를 한 번 더 눌러줘.";
+        // 첫 시도 실패 시, 보이스 강제 지정을 해제하고 1회 재시도
+        if (selectedVoice) {
+          const backup = selectedVoice;
+          selectedVoice = null;
+          const retried = speakText(text, onDone);
+          if (retried) return;
+          selectedVoice = backup;
+        }
+        el.feedback.textContent = "모바일 음성 시작 실패. 크롬/삼성인터넷에서 다시 시도해줘.";
         if (onDone) onDone(false);
       };
       window.speechSynthesis.speak(utter);
@@ -344,7 +366,18 @@ el.readBtn.addEventListener("click", () => {
   }
   autoReadMode = true;
   setAutoReadButtonText();
-  runAutoReadStep();
+  // 클릭 이벤트 안에서 첫 읽기를 직접 시작해 모바일 차단을 줄인다.
+  readCurrentQuestion((ok) => {
+    if (!ok || !autoReadMode) return;
+    const gapSec = Number(el.readGap.value);
+    const waitMs = Math.max(1, Number.isNaN(gapSec) ? 2 : gapSec) * 1000;
+    clearAutoReadTimer();
+    autoReadTimer = setTimeout(() => {
+      currentIndex = (currentIndex + 1) % quiz.questions.length;
+      renderQuestion();
+      runAutoReadStep();
+    }, waitMs);
+  });
 });
 
 el.autoReadBtn.addEventListener("click", () => {
