@@ -79,7 +79,10 @@ function restoreLastPosition() {
     const raw = localStorage.getItem(LAST_POSITION_KEY);
     if (!raw) return false;
     const saved = JSON.parse(raw);
-    if (!saved || saved.examId !== getCurrentExamStorageId()) return false;
+    if (!saved) return false;
+    const savedExamId = String(saved.examId ?? "");
+    const currentExamId = String(getCurrentExamStorageId() ?? "");
+    if (!savedExamId || savedExamId !== currentExamId) return false;
     const savedIndex = Number(saved.index);
     if (Number.isInteger(savedIndex) && savedIndex >= 0 && savedIndex < quiz.questions.length) {
       currentIndex = savedIndex;
@@ -116,7 +119,10 @@ function updateLastExamInfo() {
   }
   const matched = exams.find((exam) => String(exam.id) === String(saved.examId));
   if (matched) {
-    el.lastExamInfo.textContent = `마지막 회차: ${matched.title}`;
+    const savedNumber = saved.questionNumber != null ? String(saved.questionNumber) : "";
+    el.lastExamInfo.textContent = savedNumber
+      ? `마지막 회차: ${matched.title} / ${savedNumber}번`
+      : `마지막 회차: ${matched.title}`;
     return;
   }
   el.lastExamInfo.textContent = `마지막 회차 ID: ${String(saved.examId)}`;
