@@ -21,6 +21,7 @@ const LAST_POSITION_KEY = "gasanupgisa:last-position";
 const el = {
   meta: document.getElementById("meta"),
   examSelect: document.getElementById("exam-select"),
+  lastExamInfo: document.getElementById("last-exam-info"),
   qNumber: document.getElementById("q-number"),
   qText: document.getElementById("q-text"),
   options: document.getElementById("options"),
@@ -66,6 +67,7 @@ function saveLastPosition() {
         questionNumber: q.number
       })
     );
+    updateLastExamInfo();
   } catch (_) {
     // ignore storage errors
   }
@@ -103,6 +105,21 @@ function getSavedLastPosition() {
   } catch (_) {
     return null;
   }
+}
+
+function updateLastExamInfo() {
+  if (!el.lastExamInfo) return;
+  const saved = getSavedLastPosition();
+  if (!saved?.examId) {
+    el.lastExamInfo.textContent = "마지막 회차: 없음";
+    return;
+  }
+  const matched = exams.find((exam) => String(exam.id) === String(saved.examId));
+  if (matched) {
+    el.lastExamInfo.textContent = `마지막 회차: ${matched.title}`;
+    return;
+  }
+  el.lastExamInfo.textContent = `마지막 회차 ID: ${String(saved.examId)}`;
 }
 
 function clearSpeechForceStopTimer() {
@@ -544,11 +561,20 @@ async function loadExams() {
     opt.textContent = `${exam.title} (${exam.total}문항)`;
     el.examSelect.appendChild(opt);
   }
+  updateLastExamInfo();
   const saved = getSavedLastPosition();
   const savedExamId = String(saved?.examId || "");
   const savedExists = exams.some((exam) => String(exam.id) === savedExamId);
-  selectedExamId = savedExists ? savedExamId : exams[0].id;
+  const fallbackExamId = String(exams[0].id);
+  selectedExamId = savedExists ? savedExamId : fallbackExamId;
   el.examSelect.value = selectedExamId;
+  if (el.examSelect.value !== selectedExamId) {
+    // 값 매칭 실패 시 첫 회차를 강제로 선택해 빈 선택 상태를 막는다.
+    selectedExamId = fallbackExamId;
+    el.examSelect.value = selectedExamId;
+  }
+  const selectedOption = [...el.examSelect.options].find((opt) => opt.value === selectedExamId);
+  if (selectedOption) selectedOption.selected = true;
   el.examSelect.addEventListener("change", async () => {
     selectedExamId = el.examSelect.value;
     await loadQuiz(selectedExamId);
