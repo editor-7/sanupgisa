@@ -239,6 +239,14 @@ function syncSpeechToCurrentQuestion() {
   runAutoReadStep();
 }
 
+function stopAutoRead() {
+  autoReadMode = false;
+  setAutoReadButtonText();
+  clearAutoReadTimer();
+  if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+  el.feedback.textContent = "자동 듣기를 중지했어. 시작 버튼을 누르면 다시 재생돼.";
+}
+
 function resetProgress() {
   currentIndex = 0;
   selected = null;
@@ -392,8 +400,7 @@ el.autoReadBtn.addEventListener("click", () => {
   autoReadMode = !autoReadMode;
   setAutoReadButtonText();
   if (!autoReadMode) {
-    clearAutoReadTimer();
-    if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+    stopAutoRead();
     return;
   }
   runAutoReadStep();
@@ -451,6 +458,16 @@ init().catch((err) => {
 });
 
 setAutoReadButtonText();
+
+document.addEventListener("visibilitychange", () => {
+  // 화면이 닫히거나 백그라운드로 가면 자동 재생을 완전히 중지한다.
+  if (document.hidden) stopAutoRead();
+});
+
+window.addEventListener("pagehide", () => {
+  // 모바일 브라우저에서 화면 전환/닫기 시에도 정지 상태를 보장한다.
+  stopAutoRead();
+});
 
 if ("speechSynthesis" in window) {
   window.speechSynthesis.onvoiceschanged = () => {
