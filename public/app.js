@@ -93,6 +93,18 @@ function restoreLastPosition() {
   }
 }
 
+function getSavedLastPosition() {
+  try {
+    const raw = localStorage.getItem(LAST_POSITION_KEY);
+    if (!raw) return null;
+    const saved = JSON.parse(raw);
+    if (!saved || typeof saved !== "object") return null;
+    return saved;
+  } catch (_) {
+    return null;
+  }
+}
+
 function clearSpeechForceStopTimer() {
   if (!speechForceStopTimer) return;
   clearInterval(speechForceStopTimer);
@@ -532,7 +544,10 @@ async function loadExams() {
     opt.textContent = `${exam.title} (${exam.total}문항)`;
     el.examSelect.appendChild(opt);
   }
-  selectedExamId = exams[0].id;
+  const saved = getSavedLastPosition();
+  const savedExamId = String(saved?.examId || "");
+  const savedExists = exams.some((exam) => String(exam.id) === savedExamId);
+  selectedExamId = savedExists ? savedExamId : exams[0].id;
   el.examSelect.value = selectedExamId;
   el.examSelect.addEventListener("change", async () => {
     selectedExamId = el.examSelect.value;
