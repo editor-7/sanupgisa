@@ -16,7 +16,8 @@ const ua = navigator.userAgent || "";
 const isIOS = /iPhone|iPad|iPod/i.test(ua);
 const isSafari = /Safari/i.test(ua) && !/CriOS|FxiOS|EdgiOS/i.test(ua);
 const isIOSSafari = isIOS && isSafari;
-const LAST_POSITION_KEY = "gasanupgisa:last-position";
+const LAST_EXAM_KEY = "gasanupgisa:last-exam-id";
+const LAST_INDEXES_KEY = "gasanupgisa:last-indexes";
 
 const el = {
   meta: document.getElementById("meta"),
@@ -56,17 +57,16 @@ function getCurrentExamStorageId() {
 
 function saveLastPosition() {
   if (!quiz || !quiz.questions?.length) return;
-  const q = quiz.questions[currentIndex];
-  if (!q) return;
+  const examId = String(getCurrentExamStorageId() || "");
+  if (!examId) return;
+  const safeIndex = Math.max(0, Math.min(currentIndex, quiz.questions.length - 1));
   try {
-    localStorage.setItem(
-      LAST_POSITION_KEY,
-      JSON.stringify({
-        examId: getCurrentExamStorageId(),
-        index: currentIndex,
-        questionNumber: q.number
-      })
-    );
+    const raw = localStorage.getItem(LAST_INDEXES_KEY);
+    const parsed = raw ? JSON.parse(raw) : {};
+    const indexMap = parsed && typeof parsed === "object" ? parsed : {};
+    indexMap[examId] = safeIndex;
+    localStorage.setItem(LAST_EXAM_KEY, examId);
+    localStorage.setItem(LAST_INDEXES_KEY, JSON.stringify(indexMap));
     updateLastExamInfo();
   } catch (_) {
     // ignore storage errors
@@ -76,22 +76,15 @@ function saveLastPosition() {
 function restoreLastPosition() {
   if (!quiz || !quiz.questions?.length) return false;
   try {
-    const raw = localStorage.getItem(LAST_POSITION_KEY);
+    const examId = String(getCurrentExamStorageId() || "");
+    if (!examId) return false;
+    const raw = localStorage.getItem(LAST_INDEXES_KEY);
     if (!raw) return false;
-    const saved = JSON.parse(raw);
-    if (!saved) return false;
-    const savedExamId = String(saved.examId ?? "");
-    const currentExamId = String(getCurrentExamStorageId() ?? "");
-    if (!savedExamId || savedExamId !== currentExamId) return false;
-    const savedIndex = Number(saved.index);
-    if (Number.isInteger(savedIndex) && savedIndex >= 0 && savedIndex < quiz.questions.length) {
-      currentIndex = savedIndex;
-      return true;
-    }
-    const savedNumber = String(saved.questionNumber ?? "");
-    const idx = quiz.questions.findIndex((q) => String(q.number) === savedNumber);
-    if (idx < 0) return false;
-    currentIndex = idx;
+    const indexMap = JSON.parse(raw);
+    if (!indexMap || typeof indexMap !== "object") return false;
+    const savedIndex = Number(indexMap[examId]);
+    if (!Number.isInteger(savedIndex)) return false;
+    currentIndex = Math.max(0, Math.min(savedIndex, quiz.questions.length - 1));
     return true;
   } catch (_) {
     return false;
@@ -100,11 +93,15 @@ function restoreLastPosition() {
 
 function getSavedLastPosition() {
   try {
-    const raw = localStorage.getItem(LAST_POSITION_KEY);
-    if (!raw) return null;
-    const saved = JSON.parse(raw);
-    if (!saved || typeof saved !== "object") return null;
-    return saved;
+    const examId = String(localStorage.getItem(LAST_EXAM_KEY) || "");
+    if (!examId) return null;
+    const raw = localStorage.getItem(LAST_INDEXES_KEY);
+    const indexMap = raw ? JSON.parse(raw) : null;
+    const index = Number(indexMap?.[examId]);
+    return {
+      examId,
+      index: Number.isInteger(index) ? index : null
+    };
   } catch (_) {
     return null;
   }
@@ -119,10 +116,8 @@ function updateLastExamInfo() {
   }
   const matched = exams.find((exam) => String(exam.id) === String(saved.examId));
   if (matched) {
-    const savedNumber = saved.questionNumber != null ? String(saved.questionNumber) : "";
-    el.lastExamInfo.textContent = savedNumber
-      ? `마지막 회차: ${matched.title} / ${savedNumber}번`
-      : `마지막 회차: ${matched.title}`;
+    const numberLabel = Number.isInteger(saved.index) ? `${saved.index + 1}번` : "위치 없음";
+    el.lastExamInfo.textContent = `마지막 회차: ${matched.title} / ${numberLabel}`;
     return;
   }
   el.lastExamInfo.textContent = `마지막 회차 ID: ${String(saved.examId)}`;
@@ -549,7 +544,8 @@ async function loadQuiz(examId = "") {
   el.meta.textContent = `${quiz.title} / 총 ${quiz.total}문항`;
   renderQuestion();
   if (restored) {
-    el.feedback.textContent = "마지막 보던 문제로 이동했어.";
+    const currentNo = quiz.questions[currentIndex]?.number ?? currentIndex + 1;
+    el.feedback.textContent = `마지막 보던 문제(${currentNo}번)로 이동했어.`;
   }
 }
 
