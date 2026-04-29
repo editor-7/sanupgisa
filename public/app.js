@@ -230,7 +230,17 @@ function speakText(text, onDone) {
         }
         speakNext();
       };
-      utter.onerror = () => {
+      utter.onerror = (event) => {
+        if (sessionId !== speechSessionId) {
+          finish(false);
+          return;
+        }
+        const errType = String(event?.error || "").toLowerCase();
+        const isCanceled = errType === "canceled" || errType === "interrupted";
+        if (isCanceled) {
+          finish(false);
+          return;
+        }
         // 첫 시도 실패 시, 보이스 강제 지정을 해제하고 1회 재시도
         if (selectedVoice) {
           const backup = selectedVoice;
