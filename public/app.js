@@ -9,6 +9,7 @@ let autoReadMode = false;
 let autoReadTimer = null;
 let selectedVoice = null;
 let ttsUnlocked = false;
+let speechSessionId = 0;
 
 const ua = navigator.userAgent || "";
 const isIOS = /iPhone|iPad|iPod/i.test(ua);
@@ -44,6 +45,11 @@ function clearAutoReadTimer() {
 
 function setAutoReadButtonText() {
   el.autoReadBtn.textContent = autoReadMode ? "자동 듣기 중지" : "자동 듣기 시작";
+}
+
+function cancelSpeechPlayback() {
+  speechSessionId += 1;
+  if ("speechSynthesis" in window) window.speechSynthesis.cancel();
 }
 
 function pickKoreanVoice() {
@@ -155,6 +161,13 @@ function speakText(text, onDone) {
     return false;
   }
   try {
+    const sessionId = ++speechSessionId;
+    let doneCalled = false;
+    const finish = (ok) => {
+      if (doneCalled) return;
+      doneCalled = true;
+      if (onDone) onDone(ok);
+    };
     // iOS Safari는 직전 cancel이 재생 시작 실패를 만들 때가 있어 분기 처리
     if (!isIOSSafari) {
       window.speechSynthesis.cancel();
@@ -163,11 +176,15 @@ function speakText(text, onDone) {
     selectedVoice = selectedVoice || pickKoreanVoice();
     const chunks = splitSpeakText(text);
     if (!chunks.length) {
-      if (onDone) onDone(false);
+      finish(false);
       return false;
     }
     let i = 0;
     const speakNext = () => {
+      if (sessionId !== speechSessionId) {
+        finish(false);
+        return;
+      }
       const utter = new SpeechSynthesisUtterance(chunks[i]);
       if (selectedVoice) utter.voice = selectedVoice;
       utter.lang = selectedVoice?.lang || "ko-KR";
@@ -175,9 +192,13 @@ function speakText(text, onDone) {
       utter.pitch = 1;
       utter.volume = 1;
       utter.onend = () => {
+        if (sessionId !== speechSessionId) {
+          finish(false);
+          return;
+        }
         i += 1;
         if (i >= chunks.length) {
-          if (onDone) onDone(true);
+          finish(true);
           return;
         }
         speakNext();
@@ -187,12 +208,12 @@ function speakText(text, onDone) {
         if (selectedVoice) {
           const backup = selectedVoice;
           selectedVoice = null;
-          const retried = speakText(text, onDone);
+          const retried = speakText(text, finish);
           if (retried) return;
           selectedVoice = backup;
         }
         el.feedback.textContent = "모바일 음성 시작 실패. 크롬/삼성인터넷에서 다시 시도해줘.";
-        if (onDone) onDone(false);
+        finish(false);
       };
       window.speechSynthesis.speak(utter);
     };
@@ -235,7 +256,7 @@ function runAutoReadStep() {
 function syncSpeechToCurrentQuestion() {
   if (!autoReadMode) return;
   clearAutoReadTimer();
-  if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+  cancelSpeechPlayback();
   runAutoReadStep();
 }
 
@@ -243,7 +264,7 @@ function stopAutoRead() {
   autoReadMode = false;
   setAutoReadButtonText();
   clearAutoReadTimer();
-  if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+  cancelSpeechPlayback();
   el.feedback.textContent = "자동 듣기를 중지했어. 시작 버튼을 누르면 다시 재생돼.";
 }
 
@@ -372,27 +393,10 @@ el.jumpBtn.addEventListener("click", () => {
 
 el.readBtn.addEventListener("click", () => {
   primeTtsEngine();
-  if (autoReadMode) {
-    // 이미 연속 재생 중이면 현재 문제부터 다시 시작
-    clearAutoReadTimer();
-    if ("speechSynthesis" in window) window.speechSynthesis.cancel();
-    runAutoReadStep();
-    return;
-  }
-  autoReadMode = true;
-  setAutoReadButtonText();
-  // 클릭 이벤트 안에서 첫 읽기를 직접 시작해 모바일 차단을 줄인다.
-  readCurrentQuestion((ok) => {
-    if (!ok || !autoReadMode) return;
-    const gapSec = Number(el.readGap.value);
-    const waitMs = Math.max(1, Number.isNaN(gapSec) ? 2 : gapSec) * 1000;
-    clearAutoReadTimer();
-    autoReadTimer = setTimeout(() => {
-      currentIndex = (currentIndex + 1) % quiz.questions.length;
-      renderQuestion();
-      runAutoReadStep();
-    }, waitMs);
-  });
+  // "문제 읽기"는 현재 문제만 1회 재생한다.
+  if (autoReadMode) stopAutoRead();
+  else cancelSpeechPlayback();
+  readCurrentQuestion();
 });
 
 el.autoReadBtn.addEventListener("click", () => {
