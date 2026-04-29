@@ -62,6 +62,7 @@ function saveLastPosition() {
       LAST_POSITION_KEY,
       JSON.stringify({
         examId: getCurrentExamStorageId(),
+        index: currentIndex,
         questionNumber: q.number
       })
     );
@@ -77,7 +78,13 @@ function restoreLastPosition() {
     if (!raw) return false;
     const saved = JSON.parse(raw);
     if (!saved || saved.examId !== getCurrentExamStorageId()) return false;
-    const idx = quiz.questions.findIndex((q) => q.number === saved.questionNumber);
+    const savedIndex = Number(saved.index);
+    if (Number.isInteger(savedIndex) && savedIndex >= 0 && savedIndex < quiz.questions.length) {
+      currentIndex = savedIndex;
+      return true;
+    }
+    const savedNumber = String(saved.questionNumber ?? "");
+    const idx = quiz.questions.findIndex((q) => String(q.number) === savedNumber);
     if (idx < 0) return false;
     currentIndex = idx;
     return true;
@@ -503,9 +510,12 @@ async function loadQuiz(examId = "") {
   }
   quiz = await res.json();
   resetProgress();
-  restoreLastPosition();
+  const restored = restoreLastPosition();
   el.meta.textContent = `${quiz.title} / 총 ${quiz.total}문항`;
   renderQuestion();
+  if (restored) {
+    el.feedback.textContent = "마지막 보던 문제로 이동했어.";
+  }
 }
 
 async function loadExams() {
