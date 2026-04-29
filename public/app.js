@@ -10,6 +10,7 @@ let autoReadTimer = null;
 let selectedVoice = null;
 let ttsUnlocked = false;
 let speechSessionId = 0;
+let speechForceStopTimer = null;
 
 const ua = navigator.userAgent || "";
 const isIOS = /iPhone|iPad|iPod/i.test(ua);
@@ -47,9 +48,35 @@ function setAutoReadButtonText() {
   el.autoReadBtn.textContent = autoReadMode ? "자동 듣기 중지" : "자동 듣기 시작";
 }
 
+function clearSpeechForceStopTimer() {
+  if (!speechForceStopTimer) return;
+  clearInterval(speechForceStopTimer);
+  speechForceStopTimer = null;
+}
+
 function cancelSpeechPlayback() {
+  clearSpeechForceStopTimer();
   speechSessionId += 1;
-  if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+  if (!("speechSynthesis" in window)) return;
+  const synth = window.speechSynthesis;
+  // 모바일에서 cancel이 즉시 안 먹는 경우가 있어 짧게 반복 취소한다.
+  const stopNow = () => {
+    try {
+      synth.cancel();
+      synth.pause();
+    } catch (_) {
+      // ignore
+    }
+  };
+  stopNow();
+  let tries = 0;
+  speechForceStopTimer = setInterval(() => {
+    tries += 1;
+    stopNow();
+    if ((!synth.speaking && !synth.pending) || tries >= 12) {
+      clearSpeechForceStopTimer();
+    }
+  }, 80);
 }
 
 function pickKoreanVoice() {
@@ -395,7 +422,11 @@ el.readBtn.addEventListener("click", () => {
   primeTtsEngine();
   // "문제 읽기"는 현재 문제만 1회 재생한다.
   if (autoReadMode) stopAutoRead();
-  else cancelSpeechPlayback();
+  else if ("speechSynthesis" in window && (window.speechSynthesis.speaking || window.speechSynthesis.pending)) {
+    cancelSpeechPlayback();
+    el.feedback.textContent = "음성 읽기를 중지했어.";
+    return;
+  } else cancelSpeechPlayback();
   readCurrentQuestion();
 });
 
