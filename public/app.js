@@ -419,25 +419,29 @@ el.jumpBtn.addEventListener("click", () => {
 });
 
 el.readBtn.addEventListener("click", () => {
-  primeTtsEngine();
   // "문제 읽기"는 현재 문제만 1회 재생한다.
-  if (autoReadMode) stopAutoRead();
-  else if ("speechSynthesis" in window && (window.speechSynthesis.speaking || window.speechSynthesis.pending)) {
+  if (autoReadMode) {
+    stopAutoRead();
+    return;
+  }
+  if ("speechSynthesis" in window && (window.speechSynthesis.speaking || window.speechSynthesis.pending)) {
     cancelSpeechPlayback();
     el.feedback.textContent = "음성 읽기를 중지했어.";
     return;
-  } else cancelSpeechPlayback();
+  }
+  primeTtsEngine();
+  cancelSpeechPlayback();
   readCurrentQuestion();
 });
 
 el.autoReadBtn.addEventListener("click", () => {
-  primeTtsEngine();
-  autoReadMode = !autoReadMode;
-  setAutoReadButtonText();
-  if (!autoReadMode) {
+  if (autoReadMode) {
     stopAutoRead();
     return;
   }
+  primeTtsEngine();
+  autoReadMode = true;
+  setAutoReadButtonText();
   runAutoReadStep();
 });
 
