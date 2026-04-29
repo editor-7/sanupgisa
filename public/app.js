@@ -16,6 +16,7 @@ const ua = navigator.userAgent || "";
 const isIOS = /iPhone|iPad|iPod/i.test(ua);
 const isSafari = /Safari/i.test(ua) && !/CriOS|FxiOS|EdgiOS/i.test(ua);
 const isIOSSafari = isIOS && isSafari;
+const LAST_POSITION_KEY = "gasanupgisa:last-position";
 
 const el = {
   meta: document.getElementById("meta"),
@@ -46,6 +47,43 @@ function clearAutoReadTimer() {
 
 function setAutoReadButtonText() {
   el.autoReadBtn.textContent = autoReadMode ? "자동 듣기 중지" : "자동 듣기 시작";
+}
+
+function getCurrentExamStorageId() {
+  return selectedExamId || quiz?.title || "default";
+}
+
+function saveLastPosition() {
+  if (!quiz || !quiz.questions?.length) return;
+  const q = quiz.questions[currentIndex];
+  if (!q) return;
+  try {
+    localStorage.setItem(
+      LAST_POSITION_KEY,
+      JSON.stringify({
+        examId: getCurrentExamStorageId(),
+        questionNumber: q.number
+      })
+    );
+  } catch (_) {
+    // ignore storage errors
+  }
+}
+
+function restoreLastPosition() {
+  if (!quiz || !quiz.questions?.length) return false;
+  try {
+    const raw = localStorage.getItem(LAST_POSITION_KEY);
+    if (!raw) return false;
+    const saved = JSON.parse(raw);
+    if (!saved || saved.examId !== getCurrentExamStorageId()) return false;
+    const idx = quiz.questions.findIndex((q) => q.number === saved.questionNumber);
+    if (idx < 0) return false;
+    currentIndex = idx;
+    return true;
+  } catch (_) {
+    return false;
+  }
 }
 
 function clearSpeechForceStopTimer() {
@@ -344,6 +382,7 @@ function renderQuestion() {
     });
 
   updateScore();
+  saveLastPosition();
 }
 
 function checkAnswer() {
@@ -464,6 +503,7 @@ async function loadQuiz(examId = "") {
   }
   quiz = await res.json();
   resetProgress();
+  restoreLastPosition();
   el.meta.textContent = `${quiz.title} / 총 ${quiz.total}문항`;
   renderQuestion();
 }
